@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\turnColor.cs">
     <Files>
-      <File FileName="Assets\CubeAppear.cs" Line="13" Column="4" />
-      <File FileName="Assets\turnColor.cs" Line="11" Column="22" />
+      <File FileName="Assets\turnColor.cs" Line="16" Column="28" />
+      <File FileName="Project file.cs" Line="101" Column="48" />
+      <File FileName="Assets\CubeAppear.cs" Line="24" Column="57" />
+      <File FileName="..\..\..\WIGP1\Project 1\Assets\Clicked.cs" Line="15" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
