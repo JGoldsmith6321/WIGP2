@@ -20,6 +20,7 @@ public class turnColor : MonoBehaviour {
 		cords = cordsGet;
 	}
 
+	/*
 	public void IsActive (bool setActive){
 		isActive = setActive;
 		SetColor ();
@@ -48,4 +49,5 @@ public class turnColor : MonoBehaviour {
 	void Update () {
 	
 	}
+	*/
 }

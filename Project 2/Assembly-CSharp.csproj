@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CubeAppear.cs" />
-     <Compile Include="Assets\space.cs" />
+     <Compile Include="Assets\PlaneObj.cs" />
      <Compile Include="Assets\turnColor.cs" />
+     <None Include="Assets\projectGuide.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
