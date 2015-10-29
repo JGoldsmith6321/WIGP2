@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\CubeAppear.cs" />
      <Compile Include="Assets\PlaneObj.cs" />
+     <Compile Include="Assets\TextCode.cs" />
      <Compile Include="Assets\turnColor.cs" />
      <None Include="Assets\projectGuide.txt" />
  <Reference Include="UnityEngine.UI">

@@ -1,33 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class PlaneObj : MonoBehaviour{
 
-	public UnityEngine.UI.Text cargoTxt;
+	public CubeAppear core;
+	public TextCode cargoTxt;
+	public GameObject txt;
 	public int[] cords;
+	public int[] newCords;
 	public Vector3[,] allCords;
 	public int cargo;
 	public int cargoAdd = 10;
 	public int cargoMax = 90;
-	public int directGo;
 	public bool isActive = false;
-	public float moveBy = 1.1f;
+	public int directToGo;
 	public int[] cordsStart;
 	public float lastTurnTime = 0;
 	public float turnLength = 1.5f;
+	public int[] depot;
 
 	void Start (){
+		core = GameObject.FindGameObjectWithTag ("core").GetComponent<CubeAppear>();
+		cargoTxt = txt.GetComponent<TextCode>();
 	}
 
-	public void StartPlane(int[] at, Vector3[,] allOtherCords) {
+	public void StartPlane(int[] at, Vector3[,] allOtherCords, int[] depotAt) {
 		GetComponent<Renderer> ().material.color = Color.red;
+		depot = depotAt;
 		allCords = allOtherCords;
 		cordsStart = at;
+		newCords = at;
 		cargo = 0;
-		directGo = 0;
 		cords = at;
-		Move ();
+		Vector3 newCordsVect = allCords [newCords [0], newCords [1]];
+		newCordsVect.z = -1f; // so it's above the grid
+		transform.position = newCordsVect;
 	}
 	
 	public void thingClicked (int[] clicked){
@@ -50,47 +57,59 @@ public class PlaneObj : MonoBehaviour{
 	
 	public void MoveClicked(int[] clicked){
 		if (isActive == true) {
-			cords = clicked;
-			GetComponent<Renderer> ().material.color = Color.red;
-			Move ();
-		}
-	}
-	
-	public void MoveKeys(){// make so it only moves onece per turn
-		if (isActive == true) {
-			if (directGo == 1) {//up
-				cords [0] = (int)((float)cords [0] + moveBy);
-			}
-			if (directGo == 2) {//down
-				cords [0] = (int)((float)cords [0] - moveBy);
-			}
-			if (directGo == 3) {//left
-				cords [1] = (int)((float)cords [1] - moveBy);
-			}
-			if (directGo == 4) {//right
-				cords [1] = (int)((float)cords [1] + moveBy);
-			}
+			newCords = clicked;
 			GetComponent<Renderer> ().material.color = Color.red;
 		}
 	}
 
+	public void DirectSet(int directGo){
+		directToGo = directGo;
+	}
+
+	public void MoveKeys(){
+		if (isActive == true) {
+			if (directToGo == 1 && cords[1] < 8) {//up
+				newCords [1] = cords [1] + 1;
+			}
+			if (directToGo == 2 && cords[1] > 0) {//down
+				newCords [1] = cords [1] - 1;
+			}
+			if (directToGo == 3 && cords[0] > 0) {//left
+				newCords [0] = cords [0] - 1;
+			}
+			if (directToGo == 4 && cords[0] < 15) {//right
+				newCords [0] = cords [0] + 1;
+			}
+		}
+	}
+
 	void Move(){
-		isActive = false;
-		Vector3 newCords = allCords [cords [0], cords [1]];
-		newCords.z = -1f; // so it's above the grid
-		transform.position = newCords;
+		MoveKeys ();
+		if (isActive == true) {
+			Vector3 newCordsVect = allCords [newCords [0], newCords [1]];
+			newCordsVect.z = -1f; // so it's above the grid
+			transform.position = newCordsVect;
+			cords = newCords;
+		}
+
+		if (cords[0] == depot[0] && cords[1] == depot[1]) {
+			core.UpdateScore(cargo);
+			cargo = 0;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= lastTurnTime + turnLength) {
+			cordsStart = new int[] {0,8};// I don't know why this needs this, but it does
 			if (cords[0] == cordsStart[0] && cords[1] == cordsStart[1]){//cords == cordsStart didn't work for some reason
 				if (cargo != cargoMax){
 					cargo = cargo + cargoAdd;
-					cargoTxt.text = "" + cargo;
 				}
 			}
-			//Move ();
+			Move ();
+			cargoTxt.SetAll(""+cargo,allCords [cords [0], cords [1]]);
+			directToGo = 0;
 			lastTurnTime = Time.time;
 		}
 

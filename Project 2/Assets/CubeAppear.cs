@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CubeAppear : MonoBehaviour {
+
+	public Text txt;
+	public int score = 0;
 	public GameObject cube;
 	public GameObject planeObj;
 	public PlaneObj thePlane;
@@ -13,9 +17,12 @@ public class CubeAppear : MonoBehaviour {
 	public float moveBy = 1.1f;
 	public turnColor[,] allSpaces = new turnColor[xGrid,yGrid];
 	public Vector3[,] allCords = new Vector3[xGrid,yGrid];
+	public int[] depot;// = new int[]{15,0};
 
 	// Use this for initialization
 	void Start () {
+		depot = new int[]{15,0};
+		txt.text = ("Score: " + score); 
 		GameObject aPlane = Instantiate(planeObj,new Vector3(0,0,0),Quaternion.identity) as GameObject;
 		thePlane = aPlane.GetComponent<PlaneObj>();
 		for (int y = 0; y < yGrid; y++) {
@@ -31,15 +38,29 @@ public class CubeAppear : MonoBehaviour {
 			}
 			ySpot = ySpot + moveBy;
 		}
-		thePlane.StartPlane (new int[]{0,8}, allCords);
+		allSpaces [depot[0],depot[1]].SetColor ();
+		thePlane.StartPlane (new int[]{0,8}, allCords, depot);
 	}
 
 	public void ThingClicked (int[] cordsClicked){
 		thePlane.thingClicked(cordsClicked);
 	}
 
+	public void UpdateScore (int amnt){
+		score = score + amnt;
+		txt.text = ("Score: " + score); 
+	}
+
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			thePlane.DirectSet (1);
+		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			thePlane.DirectSet (2);
+		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			thePlane.DirectSet (3);
+		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			thePlane.DirectSet (4);
+		}
 	}
 }

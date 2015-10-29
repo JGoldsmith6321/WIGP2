@@ -20,6 +20,9 @@ public class turnColor : MonoBehaviour {
 		cords = cordsGet;
 	}
 
+	public void SetColor(){
+		GetComponent<Renderer>().material.color = Color.black;
+	}
 	/*
 	public void IsActive (bool setActive){
 		isActive = setActive;
@@ -30,6 +33,7 @@ public class turnColor : MonoBehaviour {
 		isPlane = plane;
 		SetColor ();
 	}
+	
 	void SetColor(){
 		if (isActive == true && isPlane == true) {
 			GetComponent<Renderer>().material.color = Color.magenta;
