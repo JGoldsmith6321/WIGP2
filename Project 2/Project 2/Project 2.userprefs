@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\projectGuide.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CubeAppear.cs">
     <Files>
-      <File FileName="Assets\PlaneObj.cs" Line="26" Column="43" />
-      <File FileName="Assets\CubeAppear.cs" Line="125" Column="1" />
-      <File FileName="Assets\turnColor.cs" Line="29" Column="11" />
-      <File FileName="Assets\projectGuide.txt" Line="19" Column="33" />
+      <File FileName="Assets\CubeAppear.cs" Line="20" Column="46" />
+      <File FileName="Assets\turnColor.cs" Line="1" Column="1" />
+      <File FileName="Assets\projectGuide.txt" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

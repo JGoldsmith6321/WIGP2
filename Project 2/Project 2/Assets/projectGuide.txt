@@ -1,3 +1,33 @@
+Part 3
+
+By the deadline, extend the game from Part 2 with these additional features:
+
+1) The game takes place over many turns. Each turn takes 1.5 seconds.
+
+2) The airplanes can carry cargo.
+
+3) Each turn a vehicle is in its starting location, it gains 10 tons of cargo (never above max capacity).
+
+4) Show the current cargo value somewhere on screen.
+
+5) If the player presses an arrow key while there is an active airplane, the airplane moves in that direction on the next turn. 
+	If the player touches many arrow keys between turns, only move one space total, in the most recently touched direction. 
+	The airplane is restricted to the grid. 
+
+	a. Each airplane has a cargo capacity of 90 tons.
+
+	b. At the beginning of the game, each airplane has no cargo.
+
+6) There is a delivery depot in the lower right (black cube). If a vehicle reaches that location, it delivers all its cargo.
+
+	a. The player gets 1 point for each ton of cargo delivered.
+
+7) Show the player’s current score somewhere on screen.
+
+If you complete this part before the deadline, go on to the next part.
+
+---------------------------------------------------------------------------------------------------------------------
+
 Final
 
 By the deadline, create a game that functions as follows:
