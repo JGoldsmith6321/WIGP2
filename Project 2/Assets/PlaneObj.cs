@@ -20,6 +20,7 @@ public class PlaneObj : MonoBehaviour{
 	public int[] depot;
 	public int[] cordsGoToClicked;
 	public bool goToClicked = false;
+	//public Color active = new Color();
 	
 	void Start (){
 		core = GameObject.FindGameObjectWithTag ("core").GetComponent<CubeAppear>();
@@ -55,7 +56,7 @@ public class PlaneObj : MonoBehaviour{
 			goToClicked = false;// it stops if you deactivate it, and 'forgets' the cords you told it to go to.
 		} else {// if not
 			isActive = true;
-			GetComponent<Renderer>().material.color = Color.magenta;
+			GetComponent<Renderer>().material.color = Color.yellow;
 		}
 	}
 	
